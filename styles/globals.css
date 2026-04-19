@@ -1,0 +1,99 @@
+body {
+  margin: 0;
+  background: black;
+  color: white;
+  font-family: Arial;
+}
+
+/* HERO */
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-text {
+  font-size: 4rem;
+  text-align: center;
+}
+
+.hero-text span {
+  font-size: 1.5rem;
+  opacity: 0.6;
+}
+
+/* SECTION */
+.section {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* HORIZONTAL */
+.horizontal {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.container {
+  display: flex;
+  width: 400%;
+  height: 100%;
+}
+
+.panel {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transform: scale(0.8);
+  opacity: 0.3;
+}
+
+.content {
+  text-align: center;
+}
+
+.contact {
+  font-size: 2rem;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  font-family: Arial;
+  transition: all 0.5s ease;
+}
+
+/* CYBER MODE */
+.app.cyber {
+  background: #000;
+  color: white;
+}
+
+/* DARK MODE */
+.app.dark {
+  background: #111;
+  color: #f5f5f5;
+}
+
+/* LIGHT MODE */
+.app.light {
+  background: #f7f7f7;
+  color: #111;
+}
+
+.app.light a,
+.app.light button,
+.app.light .logo {
+  color: black !important;
+}
+
+.app.light .navbar {
+  background: rgba(255,255,255,0.7);
+}
