@@ -1,33 +1,46 @@
-import { useState } from "react";
-
 export default function Navbar({ mode, setMode }) {
-  const nextMode = () => {
-    if (mode === "cyber") setMode("dark");
-    else if (mode === "dark") setMode("light");
-    else setMode("cyber");
-  };
-
-  const modeText =
-    mode === "cyber"
-      ? "Cyber Mode"
-      : mode === "dark"
-      ? "Dark Mode"
-      : "Light Mode";
+  const modes = [
+    { id: "cyber", label: "Cyber" },
+    { id: "dark", label: "Dark" },
+    { id: "light", label: "Light" },
+  ];
 
   return (
     <nav className="navbar">
       <div className="logo">AK</div>
 
       <div className="links">
-        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
         <a href="#projects">Projects</a>
-        <a href="#tech">Tech</a>
+        <a href="#certifications">Credentials</a>
         <a href="#contact">Contact</a>
       </div>
 
-      <button onClick={nextMode}>
-        {modeText}
-      </button>
+      <div className="right-section">
+        {/* Theme Switcher Pill */}
+        <div className="theme-toggle">
+          {modes.map((m) => (
+            <button
+              key={m.id}
+              className={`theme-btn ${mode === m.id ? "active" : ""}`}
+              onClick={() => setMode(m.id)}
+              aria-label={`Switch to ${m.label} theme`}
+            >
+              {m.label}
+            </button>
+          ))}
+        </div>
+
+        <a
+          href="/resume.pdf"
+          target="_blank"
+          rel="noreferrer"
+          className="resumeBtn"
+        >
+          Resume
+        </a>
+      </div>
 
       <style jsx>{`
         .navbar {
@@ -35,45 +48,110 @@ export default function Navbar({ mode, setMode }) {
           top: 20px;
           left: 50%;
           transform: translateX(-50%);
-          width: 82%;
-          z-index: 999;
-
+          width: 92%;
+          max-width: 1200px;
+          z-index: 9999;
           display: flex;
           justify-content: space-between;
           align-items: center;
-
-          padding: 18px 26px;
-          border-radius: 24px;
-
-          background: rgba(0,0,0,0.75);
+          padding: 12px 24px;
+          background: var(--nav-bg);
           backdrop-filter: blur(20px);
-          border: 1px solid rgba(255,255,255,0.06);
+          -webkit-backdrop-filter: blur(20px);
+          border: 1px solid var(--border-color);
+          border-radius: 20px;
+          transition: border-color 0.4s, background-color 0.4s;
         }
 
         .logo {
-          font-weight: 800;
+          color: var(--text-primary);
+          font-family: var(--font-plus-jakarta-sans), sans-serif;
           font-size: 1.4rem;
-          color: white;
+          font-weight: 800;
+          letter-spacing: -1px;
         }
 
         .links {
           display: flex;
-          gap: 34px;
+          gap: 28px;
         }
 
-        a {
-          color: white;
+        .links a {
+          color: var(--text-secondary);
           text-decoration: none;
-          font-size: 15px;
+          transition: color 0.3s ease;
+          font-size: 14px;
+          font-weight: 500;
         }
 
-        button {
-          padding: 10px 18px;
-          border-radius: 999px;
-          border: 1px solid rgba(255,255,255,0.12);
+        .links a:hover {
+          color: var(--text-primary);
+        }
+
+        .right-section {
+          display: flex;
+          align-items: center;
+          gap: 16px;
+        }
+
+        /* Theme Toggle Pill */
+        .theme-toggle {
+          display: flex;
+          background: rgba(0, 0, 0, 0.2);
+          border: 1px solid var(--border-color);
+          padding: 3px;
+          border-radius: 99px;
+        }
+
+        .theme-btn {
           background: transparent;
-          color: white;
+          border: none;
+          color: var(--text-secondary);
+          padding: 6px 12px;
+          font-size: 11px;
+          font-weight: 600;
+          border-radius: 99px;
           cursor: pointer;
+          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .theme-btn.active {
+          background: var(--text-primary);
+          color: var(--bg-primary);
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .resumeBtn {
+          background: var(--text-primary);
+          color: var(--bg-primary);
+          padding: 8px 18px;
+          border-radius: 12px;
+          text-decoration: none;
+          font-size: 13px;
+          font-weight: 600;
+          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+          border: 1px solid transparent;
+        }
+
+        .resumeBtn:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 8px 20px var(--accent-glow);
+        }
+
+        @media (max-width: 900px) {
+          .links {
+            display: none;
+          }
+          
+          .navbar {
+            padding: 10px 16px;
+            width: 95%;
+          }
+
+          .theme-btn {
+            padding: 4px 8px;
+            font-size: 10px;
+          }
         }
       `}</style>
     </nav>

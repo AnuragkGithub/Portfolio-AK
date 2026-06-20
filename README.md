@@ -1,28 +1,25 @@
-<<<<<<< HEAD
-# Oryzo Style Portfolio Starter
+# Anurag Karmakar - Professional Portfolio
 
-## Setup
+A premium developer portfolio showcasing enterprise workflow solutions, ServiceNow automation, and full-stack web applications. Built using Next.js, React, Lenis, and GSAP.
 
-1. npm install
-2. npm run dev
+## Setup and Run
 
-## Features
-- Scroll animations using GSAP
-- Section-based layout
-=======
-# Portfolio Project
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-## Setup Instructions
+2. Run the development server:
+   ```bash
+   npm run dev
+   ```
 
-First install dependencies:
+3. Open your browser and navigate to:
+   ```
+   http://localhost:3000
+   ```
 
-npm install
-
-Then run project:
-
-npm run dev
-
-Open browser:
-
-http://localhost:3000
->>>>>>> 8b805a9e9d08e1e947f83758a54df5dc3b0ac608
+## Tech Stack & Core Libraries
+- **Framework:** Next.js (Page Router) & React
+- **Animations & Interaction:** GSAP (ScrollTrigger) & Lenis (Smooth Scroll)
+- **Styling:** Styled-JSX and Global Vanilla CSS

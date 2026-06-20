@@ -1,442 +1,213 @@
-import { useState, useRef, useEffect } from "react";
-import gsap from "gsap";
-<section id="projects"></section>
 export default function ProjectShowcase() {
-  const [active, setActive] = useState(null);
-
-  const imageRef = useRef(null);
-  const contentRef = useRef(null);
-
   const projects = [
     {
-      title: "LSTM Stock Predictor",
-      desc: "AI-based stock prediction using deep learning models.",
-      img: "https://images.unsplash.com/photo-1640340434855-6084b1f4901c",
+      title: "ESG Data Ingestion & Analytics Platform",
+      tech: "Django REST • React • PostgreSQL",
+      description:
+        "Designed scalable data processing pipelines with extensive validation, audit tracking, reporting, and data quality consistency checks across multi-source datasets.",
+      status: "completed"
     },
     {
-      title: "MERN App",
-      desc: "Full stack application with authentication and APIs.",
-      img: "https://images.unsplash.com/photo-1555066931-4365d14bab8c",
+      title: "NutriMind AI SaaS",
+      tech: "FastAPI • Gemini API • LLMs",
+      description:
+        "Engineered an AI-powered SaaS assistant with prompt workflows, LLM-based reasoning, dynamic meal analysis, and optimized real-time inference pipelines.",
+      status: "completed"
     },
     {
-      title: "ServiceNow",
-      desc: "Enterprise automation workflows and integrations.",
-      img: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d",
+      title: "SplitMate Expense Tracker",
+      tech: "Next.js • Node.js • MongoDB",
+      description:
+        "Developed a full-stack expense manager featuring payment-ready workflows, notification triggers, and optimized client-server REST API architectures.",
+      status: "completed"
     },
     {
-      title: "System Design",
-      desc: "Scalable architecture & distributed systems.",
-      img: "https://images.unsplash.com/photo-1518770660439-4636190af475",
+      title: "rogii-wellbore-geology-prediction",
+      tech: "Python • Machine Learning",
+      description:
+        "Developing a machine learning pipeline to predict wellbore geology structures and sedimentary patterns from raw sensor data.",
+      status: "soon"
     },
+    {
+      title: "patient-dashboard",
+      tech: "React • Node.js • Chart.js",
+      description:
+        "Building a secure, highly interactive dashboard system to display real-time clinical patient vitals and health progression analytics.",
+      status: "soon"
+    },
+    {
+      title: "agentops-ai-skeleton",
+      tech: "Gen AI • LangChain • Agents",
+      description:
+        "Creating a standard reusable blueprint and telemetry framework for deploying and evaluating autonomous multi-agent systems.",
+      status: "soon"
+    }
   ];
 
-  useEffect(() => {
-    // Apple-style floating animation
-    gsap.to(".image", {
-      scale: 1.04,
-      duration: 4,
-      repeat: -1,
-      yoyo: true,
-      ease: "power1.inOut",
-    });
-  }, []);
-
-  const handleProjectChange = (index) => {
-    if (index === active) return;
-
-    gsap.to(imageRef.current, {
-      opacity: 0,
-      scale: 1.05,
-      duration: 0.35,
-      onComplete: () => {
-        setActive(index);
-
-        gsap.fromTo(
-          imageRef.current,
-          {
-            opacity: 0,
-            scale: 1.08,
-          },
-          {
-            opacity: 1,
-            scale: 1,
-            duration: 0.6,
-            ease: "power3.out",
-          }
-        );
-      },
-    });
-
-    gsap.fromTo(
-      contentRef.current,
-      {
-        opacity: 0,
-        y: 40,
-      },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.6,
-        ease: "power3.out",
-      }
-    );
-  };
-
   return (
-    <section id="projects" className="wrapper">
-      {/* LEFT SIDE */}
-      <div className="left">
-        {projects.map((item, i) => (
-          <div
-            key={i}
-            className={`item ${active === i ? "active" : ""}`}
-            onClick={() => handleProjectChange(i)}
-          >
-            <div className="title">{item.title}</div>
-
-            <div className={`desc ${active === i ? "open" : ""}`}>
-              {item.desc}
-            </div>
+    <>
+      <section id="projects" className="projects section-padding">
+        <div className="container">
+          <div className="header">
+            <p className="tag">PORTFOLIO</p>
+            <h2>
+              Featured <span className="gradient-text">Projects</span>
+            </h2>
+            <p className="subtitle">
+              A selection of enterprise software integrations, full-stack architectures,
+              and AI applications designed to solve concrete business requirements.
+            </p>
           </div>
-        ))}
-      </div>
 
-      {/* RIGHT SIDE */}
-      <div className="right">
-        {/* DEFAULT STATE → Your intro/profile */}
-        {active === null ? (
-          <div className="defaultView">
-            <div
-              className="image profileImage"
-              style={{
-                backgroundImage:
-                  "url(https://images.unsplash.com/photo-1500648767791-00dcc994a43e)",
-              }}
-            />
+          <div className="grid">
+            {projects.map((project, index) => (
+              <div 
+                key={index} 
+                className={`project-card glass-panel interactive-card ${project.status === "soon" ? "soon-card" : ""}`}
+              >
+                <div className="card-top">
+                  <span className="tech-stack">{project.tech}</span>
+                  {project.status === "soon" ? (
+                    <span className="badge-soon">Coming Soon</span>
+                  ) : (
+                    <span className="badge-active">Active</span>
+                  )}
+                </div>
 
-            <div className="content defaultContent">
-
-  {/* Background Video */}
-  <video
-    autoPlay
-    muted
-    loop
-    playsInline
-    className="heroVideo"
-  >
-    <source src="/videos/serra.mp4" type="video/mp4" />
-  </video>
-
-  {/* Dark Overlay */}
-  <div className="videoOverlay"></div>
-
-  {/* Text Content */}
-  <div className="heroText">
-    <h2>Hello, I'm Anurag</h2>
-
-    <p>
-      Software Engineer • ServiceNow • Full Stack • System Design
-    </p>
-  </div>
-
-</div>
+                <h3>{project.title}</h3>
+                <p className="description">{project.description}</p>
+              </div>
+            ))}
           </div>
-        ) : (
-          <div className="projectDisplay">
-            {/* CLOSE BUTTON */}
-            <button
-              className="closeBtn"
-              onClick={() => handleProjectChange(null)}
-            >
-              ✕
-            </button>
+        </div>
+      </section>
 
-            <div
-              ref={imageRef}
-              className="image"
-              style={{
-                backgroundImage: `url(${projects[active].img})`,
-              }}
-            />
+      <style jsx>{`
+        .projects {
+          background: var(--bg-primary);
+          transition: background-color 0.5s;
+          position: relative;
+        }
 
-            <div ref={contentRef} className="content">
-              <h2>{projects[active].title}</h2>
-              <p>{projects[active].desc}</p>
-            </div>
-          </div>
-        )}
-      </div>
+        .container {
+          max-width: 1200px;
+          margin: auto;
+        }
 
-    <style jsx>{`
-/* =========================
-   MAIN WRAPPER
-========================= */
+        .header {
+          text-align: center;
+          margin-bottom: 70px;
+        }
 
-.wrapper {
-  display: flex;
-  min-height: 100vh;
-  background: #071018;
-  color: white;
-  overflow: hidden;
-}
+        .tag {
+          font-size: 12px;
+          font-weight: 700;
+          letter-spacing: 3px;
+          color: var(--tag-text);
+          background: var(--tag-bg);
+          border: 1px solid var(--border-color);
+          width: fit-content;
+          padding: 6px 14px;
+          border-radius: 99px;
+          margin: 0 auto 24px auto;
+        }
 
-/* =========================
-   LEFT SIDE
-========================= */
+        h2 {
+          font-size: clamp(2.5rem, 5vw, 4.5rem);
+          font-weight: 800;
+          margin-bottom: 20px;
+          letter-spacing: -2px;
+        }
 
-.left {
-  width: 38%;
-  padding: 100px 70px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 24px;
-  background: #071018;
-}
+        .subtitle {
+          max-width: 600px;
+          margin: auto;
+          color: var(--text-secondary);
+          line-height: 1.7;
+          font-size: 1.05rem;
+        }
 
-/* CARD ITEM */
+        .grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+          gap: 24px;
+        }
 
-.item {
-  position: relative;
-  padding: 28px 30px;
-  border-radius: 28px;
-  cursor: pointer;
-  transition: all 0.4s ease;
+        .project-card {
+          padding: 32px;
+          display: flex;
+          flex-direction: column;
+          min-height: 280px;
+        }
 
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+        .soon-card {
+          opacity: 0.7;
+          border-style: dashed;
+        }
 
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+        .card-top {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 20px;
+        }
 
-  box-shadow:
-    0 10px 40px rgba(0, 0, 0, 0.25),
-    inset 0 1px 0 rgba(255,255,255,0.05);
-}
+        .tech-stack {
+          font-size: 11px;
+          font-weight: 600;
+          color: var(--accent-secondary, var(--text-secondary));
+          letter-spacing: 1px;
+          text-transform: uppercase;
+        }
 
-.item:hover {
-  background: rgba(255, 255, 255, 0.12);
-  transform: translateY(-2px);
-}
+        .badge-active {
+          font-size: 10px;
+          font-weight: 700;
+          color: var(--tag-text);
+          background: var(--tag-bg);
+          border: 1px solid var(--border-color);
+          padding: 4px 10px;
+          border-radius: 8px;
+          text-transform: uppercase;
+        }
 
-.item.active {
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  transform: translateY(-4px);
-}
+        .badge-soon {
+          font-size: 10px;
+          font-weight: 700;
+          color: var(--text-secondary);
+          background: var(--bg-card);
+          border: 1px solid var(--border-color);
+          padding: 4px 10px;
+          border-radius: 8px;
+          text-transform: uppercase;
+        }
 
-.title {
-  font-size: 1.1rem;
-  font-weight: 500;
-}
+        .project-card h3 {
+          font-size: 1.4rem;
+          font-weight: 800;
+          margin-bottom: 14px;
+          color: var(--text-primary);
+          line-height: 1.3;
+        }
 
-.desc {
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
-  transition: 0.4s ease;
-  font-size: 0.95rem;
-  margin-top: 10px;
-  line-height: 1.6;
-}
+        .project-card .description {
+          color: var(--text-secondary);
+          line-height: 1.6;
+          font-size: 0.95rem;
+          margin-top: auto;
+        }
 
-.desc.open {
-  max-height: 140px;
-  opacity: 1;
-}
-
-/* =========================
-   RIGHT SIDE
-========================= */
-
-.right {
-  width: 62%;
-  position: relative;
-  display: flex;
-  align-items: stretch;
-  justify-content: center;
-  overflow: hidden;
-  min-height: 100vh;
-  background: #000;
-}
-
-/* REMOVE OLD IMAGE LAYER */
-
-.image,
-.profileImage {
-  display: none !important;
-}
-
-/* MAIN VIEW */
-
-.defaultView,
-.projectDisplay {
-  width: 100%;
-  height: 100%;
-  min-height: 100vh;
-  position: relative;
-  border-radius: 30px;
-  overflow: hidden;
-  background: #000;
-}
-
-/* =========================
-   VIDEO HERO SECTION
-========================= */
-
-.defaultContent {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  min-height: 100vh;
-  border-radius: 30px;
-  overflow: hidden;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  background: #000;
-}
-
-/* FULL BACKGROUND VIDEO */
-
-.heroVideo {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 1;
-}
-
-/* DARK PREMIUM OVERLAY */
-
-.videoOverlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.45);
-  z-index: 2;
-}
-
-/* CENTER TEXT */
-
-.heroText {
-  position: relative;
-  z-index: 3;
-  text-align: center;
-  color: white;
-  padding: 40px;
-  max-width: 900px;
-}
-
-/* BIG TITLE */
-
-.heroText h2 {
-  font-size: clamp(4rem, 8vw, 7rem);
-  font-weight: 800;
-  line-height: 1;
-  margin-bottom: 20px;
-  letter-spacing: -2px;
-}
-
-/* SUBTITLE */
-
-.heroText p {
-  font-size: 1.2rem;
-  line-height: 1.8;
-  opacity: 0.95;
-  letter-spacing: 0.5px;
-  max-width: 700px;
-  margin: auto;
-}
-
-/* =========================
-   PROJECT CONTENT
-========================= */
-
-.content {
-  position: relative;
-  z-index: 3;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding-left: 80px;
-  max-width: 700px;
-}
-
-.content h2 {
-  font-size: clamp(4rem, 8vw, 8rem);
-  font-weight: 700;
-  line-height: 0.95;
-  letter-spacing: -3px;
-  margin-bottom: 24px;
-}
-
-.content p {
-  font-size: 1.1rem;
-  opacity: 0.85;
-  line-height: 1.6;
-  max-width: 500px;
-}
-
-/* =========================
-   CLOSE BUTTON
-========================= */
-
-.closeBtn {
-  position: absolute;
-  top: 30px;
-  right: 30px;
-  z-index: 5;
-
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  border: none;
-
-  background: rgba(255, 255, 255, 0.12);
-  color: white;
-  font-size: 1.4rem;
-  cursor: pointer;
-
-  backdrop-filter: blur(10px);
-  transition: 0.3s;
-}
-
-.closeBtn:hover {
-  background: rgba(255, 255, 255, 0.22);
-  transform: scale(1.05);
-}
-
-/* =========================
-   RESPONSIVE
-========================= */
-
-@media (max-width: 1100px) {
-  .wrapper {
-    flex-direction: column;
-  }
-
-  .left,
-  .right {
-    width: 100%;
-  }
-
-  .left {
-    padding: 60px 30px;
-  }
-
-  .content {
-    padding: 40px;
-  }
-
-  .heroText h2 {
-    font-size: clamp(2.5rem, 8vw, 5rem);
-  }
-}
-`}</style>
-    </section>
+        @media (max-width: 768px) {
+          .grid {
+            grid-template-columns: 1fr;
+          }
+          
+          .project-card {
+            padding: 24px;
+            min-height: 240px;
+          }
+        }
+      `}</style>
+    </>
   );
 }

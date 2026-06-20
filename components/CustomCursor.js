@@ -1,41 +1,75 @@
 import { useEffect, useRef } from "react";
 
 export default function CustomCursor() {
-  const cursorRef = useRef();
+  const cursorDotRef = useRef(null);
+  const cursorCircleRef = useRef(null);
 
   useEffect(() => {
-    const moveCursor = (e) => {
-      if (cursorRef.current) {
-        cursorRef.current.style.left = `${e.clientX}px`;
-        cursorRef.current.style.top = `${e.clientY}px`;
+    const cursorDot = cursorDotRef.current;
+    const cursorCircle = cursorCircleRef.current;
+    if (!cursorDot || !cursorCircle) return;
+
+    let mouseX = 0;
+    let mouseY = 0;
+    let circleX = 0;
+    let circleY = 0;
+
+    const onMouseMove = (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      
+      // Update dot position instantly
+      cursorDot.style.left = `${mouseX}px`;
+      cursorDot.style.top = `${mouseY}px`;
+    };
+
+    const animateCircle = () => {
+      // Add a trailing lag (smooth interpolation)
+      const delay = 8; // Higher = slower trail
+      circleX += (mouseX - circleX) / delay;
+      circleY += (mouseY - circleY) / delay;
+
+      cursorCircle.style.left = `${circleX}px`;
+      cursorCircle.style.top = `${circleY}px`;
+
+      requestAnimationFrame(animateCircle);
+    };
+
+    window.addEventListener("mousemove", onMouseMove);
+    const animationFrame = requestAnimationFrame(animateCircle);
+
+    // Hover effect for interactive elements
+    const handleMouseOver = (e) => {
+      const target = e.target;
+      const isClickable = 
+        target.tagName === "A" || 
+        target.tagName === "BUTTON" || 
+        target.closest("a") || 
+        target.closest("button") ||
+        target.classList.contains("interactive-card") ||
+        target.closest(".interactive-card") ||
+        target.style.cursor === "pointer";
+
+      if (isClickable) {
+        cursorCircle.classList.add("hovered");
+      } else {
+        cursorCircle.classList.remove("hovered");
       }
     };
 
-    window.addEventListener("mousemove", moveCursor);
+    window.addEventListener("mouseover", handleMouseOver);
 
     return () => {
-      window.removeEventListener("mousemove", moveCursor);
+      window.removeEventListener("mousemove", onMouseMove);
+      cancelAnimationFrame(animationFrame);
+      window.removeEventListener("mouseover", handleMouseOver);
     };
   }, []);
 
   return (
     <>
-      <div ref={cursorRef} className="cursor" />
-
-      <style jsx>{`
-        .cursor {
-          width: 24px;
-          height: 24px;
-          border: 1px solid rgba(255,255,255,0.5);
-          border-radius: 50%;
-          position: fixed;
-          pointer-events: none;
-          transform: translate(-50%, -50%);
-          z-index: 9999;
-          backdrop-filter: blur(4px);
-          transition: transform 0.08s linear;
-        }
-      `}</style>
+      <div ref={cursorDotRef} className="custom-cursor-dot" />
+      <div ref={cursorCircleRef} className="custom-cursor" />
     </>
   );
 }
