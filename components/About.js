@@ -78,7 +78,7 @@ export default function About() {
 
       <style jsx>{`
         .about {
-          background: var(--bg-primary);
+          background: var(--bg);
           transition: background-color 0.5s;
           position: relative;
         }
@@ -134,10 +134,10 @@ export default function About() {
           display: flex;
           flex-direction: column;
           justify-content: space-between;
-          background: var(--bg-card);
+          background: var(--panel);
           backdrop-filter: blur(16px);
           -webkit-backdrop-filter: blur(16px);
-          border: 1px solid var(--border-color);
+          border: 1px solid var(--border);
           border-radius: 24px;
           transition: border-color 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
         }
@@ -166,7 +166,7 @@ export default function About() {
           font-size: 10px;
           font-weight: 700;
           letter-spacing: 1.5px;
-          color: var(--accent-secondary, var(--text-secondary));
+          color: var(--accent-secondary);
           margin-bottom: 8px;
           text-transform: uppercase;
         }

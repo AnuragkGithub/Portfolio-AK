@@ -29,18 +29,26 @@ export default function TechStack() {
   }, []);
 
   const stack = [
-    "Java",
-    "Python",
     "JavaScript",
-    "React",
-    "Next.js",
-    "ServiceNow",
-    "SQL",
-    "MongoDB",
-    "AWS",
-    "Git/GitHub",
+    "TypeScript",
+    "Python",
+    "C++",
+    "Java",
+    "HTML5",
+    "CSS3",
     "REST APIs",
+    "Next.js",
+    "Node.js",
+    "React",
+    "Django REST",
+    "FastAPI",
+    "ServiceNow",
+    "AngularJS",
+    "MongoDB",
+    "PostgreSQL",
+    "AWS",
     "CI/CD",
+    "Git/GitHub",
   ];
 
   return (
@@ -65,8 +73,8 @@ export default function TechStack() {
       <style jsx>{`
         .tech-section {
           min-height: 100vh;
-          background: #0b1020;
-          color: white;
+          background: transparent;
+          color: var(--text);
           padding: 140px 80px;
         }
 
@@ -107,24 +115,24 @@ export default function TechStack() {
         .tech-card {
           min-height: 140px;
           border-radius: 28px;
-          background: rgba(255, 255, 255, 0.04);
-          border: 1px solid rgba(255, 255, 255, 0.08);
+          background: var(--panel);
+          border: 1px solid var(--border);
           backdrop-filter: blur(14px);
           display: flex;
           align-items: center;
           justify-content: center;
           font-size: 1.2rem;
           font-weight: 600;
-          transition: all 0.35s ease;
+          transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
           cursor: pointer;
         }
 
         .tech-card:hover {
           transform: translateY(-8px);
-          background: rgba(255, 255, 255, 0.08);
+          background: var(--panel-strong);
           box-shadow:
-            0 0 30px rgba(0, 255, 255, 0.08),
-            0 0 60px rgba(255, 0, 255, 0.05);
+            0 0 30px rgba(0, 255, 255, 0.06),
+            0 0 60px rgba(255, 0, 255, 0.03);
         }
 
         @media (max-width: 900px) {

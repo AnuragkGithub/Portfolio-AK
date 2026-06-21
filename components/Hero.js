@@ -1,5 +1,5 @@
 export default function Hero() {
-  const name = "Anurag Karmakar";
+  const name = "ANURAG KARMAKAR";
 
   return (
     <>
@@ -37,32 +37,37 @@ export default function Hero() {
             })}
           </h1>
 
+          <div className="heroAbout">
+            <h2>About Me</h2>
+            <p>
+              I design enterprise systems, AI-enabled workflows, and resilient digital products that move teams from prototype to production with confidence.
+            </p>
+          </div>
+
           <div className="recruiter-points">
             <div className="bullet-point">
               <span className="bullet-icon">🚀</span>
-              <p><strong>ServiceNow Certified System Administrator (CSA)</strong> with hands-on enterprise workflow engineering and process optimization experience.</p>
+              <p><strong>ServiceNow Certified System Administrator (CSA)</strong> with enterprise-grade workflow engineering and production support experience.</p>
             </div>
             <div className="bullet-point">
               <span className="bullet-icon">💡</span>
-              <p><strong>Full-Stack & GenAI Architect:</strong> Designed FastAPI + Gemini AI SaaS engines and React + Django REST ingestion pipelines.</p>
+              <p><strong>Enterprise & AI-Enabled Systems:</strong> Built FastAPI + Gemini AI pipelines, Django REST ingestion platforms, and SaaS-ready Next.js products.</p>
             </div>
             <div className="bullet-point">
               <span className="bullet-icon">📈</span>
-              <p><strong>Problem Solver:</strong> Solved 400+ Data Structures & Algorithms challenges on LeetCode; published 2 IoT & cloud research papers.</p>
+              <p><strong>Delivery Focused:</strong> Resolved critical production issues, improved validation workflows, and applied root-cause analysis to reduce recurring support tickets.</p>
             </div>
           </div>
 
           <div className="buttons">
             <a href="#projects" className="primary-btn">
-              View Work
+              See My Work
             </a>
             <a
-              href="/resume.pdf"
-              target="_blank"
-              rel="noreferrer"
+              href="mailto:anuragkar2503@gmail.com"
               className="secondary-btn"
             >
-              Resume
+              Contact Me
             </a>
           </div>
         </div>
@@ -77,8 +82,7 @@ export default function Hero() {
           position: relative;
           overflow: hidden;
           padding: 140px 8% 80px 8%;
-          background-color: var(--bg-primary);
-          transition: background-color 0.5s;
+          background: var(--bg-gradient);
         }
 
         .glow-container {
@@ -95,23 +99,23 @@ export default function Hero() {
           position: absolute;
           border-radius: 50%;
           filter: blur(100px);
-          opacity: 0.15;
+          opacity: 0.14;
           animation: pulseGlow 8s infinite alternate ease-in-out;
         }
 
         .sphere-1 {
-          width: 400px;
-          height: 400px;
-          background: var(--accent-primary);
-          top: 15%;
-          left: 10%;
+          width: 420px;
+          height: 420px;
+          background: rgba(56, 189, 248, 0.26);
+          top: 10%;
+          left: 8%;
         }
 
         .sphere-2 {
-          width: 350px;
-          height: 350px;
-          background: var(--accent-secondary, var(--accent-primary));
-          bottom: 15%;
+          width: 360px;
+          height: 360px;
+          background: rgba(192, 132, 252, 0.2);
+          bottom: 12%;
           right: 10%;
           animation-delay: -3s;
         }
@@ -129,174 +133,216 @@ export default function Hero() {
           display: inline-flex;
           align-items: center;
           gap: 8px;
-          background: var(--tag-bg);
-          color: var(--tag-text);
-          border: 1px solid var(--border-color);
-          padding: 8px 16px;
-          border-radius: 99px;
+          background: var(--panel);
+          color: var(--text);
+          border: 1px solid var(--border);
+          padding: 10px 18px;
+          border-radius: 999px;
           font-size: 11px;
           font-weight: 700;
           letter-spacing: 2px;
           margin-bottom: 28px;
           text-transform: uppercase;
+          backdrop-filter: blur(12px);
         }
 
         .badge-dot {
           width: 6px;
           height: 6px;
-          background-color: var(--accent-secondary, var(--accent-primary));
+          background-color: var(--accent);
           border-radius: 50%;
           display: inline-block;
-          box-shadow: 0 0 8px var(--accent-secondary, var(--accent-primary));
+          box-shadow: 0 0 12px rgba(56, 189, 248, 0.45);
         }
 
-        /* Single line name with shifting RGB gradient */
         .name-container {
-          font-family: var(--font-plus-jakarta-sans), sans-serif;
-          font-size: clamp(3rem, 7.5vw, 6.8rem);
+          font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+          font-size: clamp(3rem, 7.5vw, 6.2rem);
           font-weight: 900;
-          line-height: 1.1;
-          margin: 0 0 40px 0;
-          letter-spacing: -3px;
-          background: linear-gradient(
-            45deg,
-            #8b5cf6, /* Violet */
-            #06b6d4, /* Cyan */
-            #ec4899, /* Pink */
-            #3b82f6, /* Blue */
-            #8b5cf6
-          );
-          background-size: 300% auto;
+          line-height: 1.04;
+          margin: 0 0 36px 0;
+          letter-spacing: -0.04em;
+          background: linear-gradient(90deg, var(--accent), var(--accent-strong), var(--accent-soft));
+          background-size: 200% 200%;
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
-          background-clip: text;
-          animation: rgbShift 8s linear infinite;
+          animation: rgbShift 7s ease infinite;
           display: inline-flex;
-          flex-wrap: nowrap; /* keep name on a single line */
-          white-space: nowrap; /* prevent wrapping */
+          white-space: nowrap;
           justify-content: center;
-          cursor: default;
         }
 
         @keyframes rgbShift {
-          0% {
-            background-position: 0% 50%;
-          }
-          50% {
-            background-position: 100% 50%;
-          }
-          100% {
-            background-position: 0% 50%;
-          }
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
         }
 
-        /* Jumping animation delay triggers */
         .letter {
           display: inline-block;
           animation: waveBounce 3.5s ease-in-out infinite;
-          transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+          transition: transform 0.2s ease;
         }
 
         .letter:hover {
           animation-play-state: paused;
-          transform: translateY(-20px) scale(1.25) rotate(5deg) !important;
-          text-shadow: 0 10px 20px var(--accent-glow);
+          transform: translateY(-14px) scale(1.12) rotate(1deg);
+          text-shadow: 0 16px 28px rgba(56, 189, 248, 0.4);
         }
 
-        .space {
-          display: inline-block;
-        }
+        .space { display: inline-block; }
 
         @keyframes waveBounce {
-          0%, 100% {
-            transform: translateY(0);
-          }
-          40% {
-            transform: translateY(-10px);
-          }
-          60% {
-            transform: translateY(0);
-          }
+          0%, 100% { transform: translateY(0); }
+          40% { transform: translateY(-8px); }
+          60% { transform: translateY(0); }
         }
 
-        /* Recruiter Bullet List Layout */
         .recruiter-points {
-          display: flex;
-          flex-direction: column;
-          gap: 16px;
+          display: grid;
+          gap: 18px;
           max-width: 720px;
           text-align: left;
-          background: var(--bg-card);
-          padding: 24px;
-          border-radius: 20px;
-          border: 1px solid var(--border-color);
-          backdrop-filter: blur(12px);
+          background: var(--panel);
+          padding: 28px;
+          border-radius: 28px;
+          border: 1px solid var(--border);
+          backdrop-filter: blur(22px);
           margin-bottom: 40px;
+          box-shadow: var(--shadow-soft);
         }
 
         .bullet-point {
           display: flex;
           align-items: flex-start;
-          gap: 12px;
+          gap: 14px;
         }
 
         .bullet-icon {
-          font-size: 1.2rem;
+          font-size: 1.3rem;
           line-height: 1.4;
         }
 
         .bullet-point p {
-          font-size: 1.02rem;
-          line-height: 1.5;
-          color: var(--text-secondary);
+          font-size: 1rem;
+          line-height: 1.7;
+          color: var(--text-muted);
           margin: 0;
         }
 
         .bullet-point p strong {
-          color: var(--text-primary);
+          color: var(--text);
         }
 
         .buttons {
           display: flex;
-          justify-content: center;
-          gap: 20px;
+          gap: 18px;
           flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .primary-btn,
+        .secondary-btn {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          padding: 16px 26px;
+          border-radius: 999px;
+          border: 1px solid var(--border);
+          transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
         }
 
         .primary-btn {
-          background: var(--text-primary);
-          color: var(--bg-primary);
+          background: linear-gradient(135deg, var(--accent), var(--accent-soft));
+          color: #070a13;
+          font-weight: 700;
+        }
+
+        .secondary-btn {
+          background: var(--panel);
+          color: var(--text);
+        }
+
+        .primary-btn:hover,
+        .secondary-btn:hover {
+          transform: translateY(-2px);
+          border-color: var(--accent);
+        }
+
+        @media (max-width: 900px) {
+          .hero {
+            padding: 120px 6% 60px 6%;
+          }
+
+          .badge {
+            padding: 8px 14px;
+          }
+
+          .buttons {
+            justify-content: center;
+          }
+        }
+
+        .primary-btn {
+          background: linear-gradient(135deg, var(--accent), var(--accent-soft));
+          color: #070a13;
           padding: 16px 32px;
           font-size: 15px;
           font-weight: 600;
           border-radius: 14px;
           text-decoration: none;
           transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-          box-shadow: 0 8px 24px var(--accent-glow);
+          box-shadow: 0 8px 24px rgba(56, 189, 248, 0.22);
           border: 1px solid transparent;
         }
 
         .primary-btn:hover {
           transform: translateY(-3px);
-          box-shadow: 0 16px 32px var(--accent-glow);
+          box-shadow: 0 16px 32px rgba(56, 189, 248, 0.24);
         }
 
         .secondary-btn {
-          background: transparent;
-          color: var(--text-primary);
+          background: var(--panel);
+          color: var(--text);
           padding: 16px 32px;
           font-size: 15px;
           font-weight: 600;
           border-radius: 14px;
           text-decoration: none;
-          border: 1px solid var(--border-color);
+          border: 1px solid var(--border);
           transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .secondary-btn:hover {
           transform: translateY(-3px);
-          background: var(--bg-card);
-          border-color: var(--border-hover);
+          background: var(--panel-strong);
+          border-color: var(--accent);
+        }
+
+        .heroAbout {
+          max-width: 720px;
+          margin: 0 auto 34px;
+          padding: 24px 28px;
+          border-radius: 28px;
+          background: var(--panel);
+          border: 1px solid var(--border);
+          box-shadow: var(--shadow-soft);
+          backdrop-filter: blur(20px);
+          text-align: left;
+        }
+
+        .heroAbout h2 {
+          margin: 0 0 12px;
+          font-size: clamp(1.8rem, 3vw, 2.4rem);
+          color: var(--text);
+          line-height: 1.08;
+        }
+
+        .heroAbout p {
+          margin: 0;
+          color: var(--text-muted);
+          font-size: 1rem;
+          line-height: 1.8;
         }
 
         @media (max-width: 768px) {

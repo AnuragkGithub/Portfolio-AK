@@ -1,77 +1,106 @@
 export default function Contact() {
   return (
     <section id="contact" className="contact">
-      <div className="label">Contact</div>
+      <div className="contactCard">
+        <div className="label">Contact</div>
 
-      <h2>
-        Let’s Build
-        <br />
-        Something Exceptional.
-      </h2>
+        <h2>
+          Let's build the next high-impact system together.
+        </h2>
 
-      <p>
-        Whether it's enterprise automation, scalable systems,
-        premium product development, or digital transformation —
-        let’s create something that matters.
-      </p>
+        <p>
+          Enterprise automation, AI-enabled workflows, and product-ready
+          platforms delivered with reliability, speed, and strategic clarity.
+        </p>
 
-      <a href="mailto:yourmail@gmail.com">
-        Start a Conversation
-      </a>
+        <div className="contactList">
+          <a href="tel:+918073497325" aria-label="Call +91 80734 97325">Phone</a>
+          <a href="mailto:anuragkar2503@gmail.com" aria-label="Email anuragkar2503@gmail.com">Email</a>
+          <a href="https://www.linkedin.com/in/anurag-karmakar-a23b8918a/" target="_blank" rel="noreferrer" aria-label="Open LinkedIn profile">
+            LinkedIn
+          </a>
+          <a href="https://github.com/AnuragkGithub" target="_blank" rel="noreferrer" aria-label="Open GitHub profile">
+            GitHub
+          </a>
+        </div>
+      </div>
 
       <style jsx>{`
         .contact {
           min-height: 100vh;
-          background: #f8f8f8;
-color: black;
+          background: transparent;
           padding: 120px 80px;
           display: flex;
-          flex-direction: column;
+          align-items: center;
           justify-content: center;
+          color: var(--text);
+        }
+
+        .contactCard {
+          max-width: 760px;
+          width: 100%;
+          padding: 60px;
+          border-radius: 32px;
+          background: var(--panel);
+          border: 1px solid var(--border);
+          backdrop-filter: blur(22px);
+          box-shadow: var(--shadow-soft);
         }
 
         .label {
           font-size: 0.9rem;
           text-transform: uppercase;
           letter-spacing: 3px;
-          opacity: 0.6;
-          margin-bottom: 30px;
+          opacity: 0.72;
+          margin-bottom: 24px;
+          color: var(--text-muted);
         }
 
         h2 {
-          font-size: clamp(3rem, 7vw, 7rem);
-          line-height: 0.95;
-          letter-spacing: -2px;
-          margin-bottom: 40px;
+          font-size: clamp(3rem, 6vw, 5rem);
+          line-height: 1.02;
+          margin-bottom: 28px;
+          letter-spacing: -1px;
+          color: var(--text);
         }
 
         p {
-          font-size: 1.2rem;
+          font-size: 1.05rem;
           line-height: 1.8;
-          max-width: 700px;
-          opacity: 0.8;
-          margin-bottom: 50px;
+          opacity: 0.85;
+          max-width: 620px;
+          margin-bottom: 42px;
+          color: var(--text-muted);
         }
 
-        a {
-          display: inline-block;
-          width: fit-content;
-          padding: 18px 36px;
-          border-radius: 999px;
-          background: white;
-          color: black;
-          font-weight: 600;
-          text-decoration: none;
-          transition: 0.3s;
+        .contactList {
+          display: grid;
+          gap: 18px;
         }
 
-        a:hover {
+        .contactList a {
+          display: inline-flex;
+          align-items: center;
+          padding: 16px 20px;
+          border-radius: 18px;
+          background: rgba(255, 255, 255, 0.06);
+          border: 1px solid var(--border);
+          color: var(--text);
+          transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .contactList a:hover {
           transform: translateY(-2px);
+          background: rgba(56, 189, 248, 0.14);
         }
 
         @media (max-width: 900px) {
           .contact {
-            padding: 80px 30px;
+            padding: 80px 28px;
+          }
+
+          .contactCard {
+            padding: 40px;
           }
         }
       `}</style>

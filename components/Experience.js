@@ -67,35 +67,35 @@ export default function Experience() {
         <div className="rightPanel">
           <div className="expCard mainCard">
             <span>STMICROELECTRONICS</span>
-            <h3>Project Trainee — DTIT</h3>
+            <h3>Software Engineer | Enterprise Applications</h3>
             <p>
-              Digital Transformation & Information Technology
+              Greater Noida, India • July 2025 – Present
             </p>
 
             <div className="line" />
 
             <ul>
-              <li>ServiceNow Development</li>
-              <li>PPAP Request Tracker</li>
-              <li>CI/CD Automation</li>
-              <li>QA Update Set Deployment</li>
-              <li>Workflow Engineering</li>
+              <li>Troubleshot and maintained enterprise-scale apps using JavaScript, TypeScript, and REST APIs.</li>
+              <li>Resolved production issues with root-cause analysis and workflow fixes to reduce recurring support tickets.</li>
+              <li>Delivered ServiceNow SPM modules including DTIT, Capacity Planning, PMMS, and QMT with AngularJS, Jelly scripting, and UI Policies.</li>
+              <li>Led development of a new PPAP application, driving workflow design, role-based access, and business process automation.</li>
             </ul>
           </div>
 
           <div className="expCard miniCard">
-            <span>SERVICENOW</span>
-            <h4>Enterprise Workflow Automation</h4>
+            <span>TATA ELXSI</span>
+            <h4>Cyber Security Developer & Researcher</h4>
+            <p>August 2022 – November 2022 • Bengaluru</p>
           </div>
 
           <div className="expCard miniCard">
-            <span>CI/CD</span>
-            <h4>Deployment & QA Migration</h4>
+            <span>SECURITY AUTOMATION</span>
+            <h4>Python testing and validation frameworks</h4>
           </div>
 
           <div className="expCard miniCard">
-            <span>SYSTEM DESIGN</span>
-            <h4>Scalable Internal Platforms</h4>
+            <span>DELIVERY IMPACT</span>
+            <h4>Improved workflow efficiency and system validation</h4>
           </div>
         </div>
       </section>
@@ -103,8 +103,8 @@ export default function Experience() {
       <style jsx>{`
         .experience {
           min-height: 100vh;
-          background: #040404;
-          color: white;
+          background: transparent;
+          color: var(--text);
           padding: 140px 7%;
           display: grid;
           grid-template-columns: 1fr 1.2fr;
@@ -143,19 +143,11 @@ export default function Experience() {
         .expCard {
           border-radius: 28px;
           padding: 36px;
-
-          background:
-            linear-gradient(
-              145deg,
-              rgba(255,255,255,0.05),
-              rgba(255,255,255,0.015)
-            );
-
-          border: 1px solid rgba(255,255,255,0.08);
+          background: var(--panel);
+          border: 1px solid var(--border);
           backdrop-filter: blur(18px);
-
-          box-shadow:
-            0 20px 60px rgba(0,0,0,0.4);
+          box-shadow: var(--shadow-soft);
+          transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
         }
 
         .mainCard {

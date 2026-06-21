@@ -34,6 +34,8 @@ export default function CustomCursor() {
           z-index: 9999;
           backdrop-filter: blur(4px);
           transition: transform 0.08s linear;
+          box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+          background: transparent;
         }
       `}</style>
     </>
