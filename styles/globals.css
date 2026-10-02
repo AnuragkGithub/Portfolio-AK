@@ -31,6 +31,7 @@
 
 html {
   scroll-behavior: smooth;
+  width: 100%;
 }
 
 * {
@@ -39,6 +40,8 @@ html {
 
 body {
   margin: 0;
+  width: 100%;
+  overflow-x: clip;
   min-height: 100vh;
   font-family: var(--font-sans);
   color: var(--text);
@@ -64,6 +67,21 @@ img,
 video {
   max-width: 100%;
   display: block;
+}
+
+#__next {
+  min-height: 100vh;
+  overflow-x: clip;
+}
+
+.section-padding {
+  padding: clamp(4rem, 9vw, 8rem) clamp(1rem, 6vw, 5rem);
+}
+
+@media (max-width: 640px) {
+  .section-padding {
+    padding: 4.5rem 1rem;
+  }
 }
 
 body.app.cyber {
@@ -141,15 +159,16 @@ body.app.light {
   --tag-text: rgba(15, 23, 42, 0.72);
 }
 
-body.app.light a,
-body.app.light button,
-body.app.light .logo {
-  color: #111111 !important;
-}
-
 body.app.light .navbar {
   background: rgba(255, 255, 255, 0.92);
   border-color: rgba(0, 0, 0, 0.08);
+}
+
+body.app.light button.categoryButton.active,
+body.app.light .links button:hover,
+body.app.light button.timezoneOption:hover,
+body.app.light button.timezoneOption.selected {
+  color: var(--accent) !important;
 }
 
 body.app.dark .navbar {
@@ -160,4 +179,9 @@ body.app.dark .navbar {
 body.app.cyber .navbar {
   background: rgba(7, 7, 10, 0.92);
   border-color: rgba(56, 189, 248, 0.18);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
 }
