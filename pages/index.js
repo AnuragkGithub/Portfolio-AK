@@ -6,8 +6,7 @@ import React, { useState, useEffect, useRef, useMemo, useCallback } from "react"
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import Lenis from "lenis";
-
-
+import Link from "next/link";
 // ================= CustomCursor.js =================
 function CustomCursor() {
   const cursorRef = useRef();
@@ -520,12 +519,19 @@ function Navbar({ mode, setMode }) {
         </div>
       </div>
 
-      <div className="links">
-        <button type="button" onClick={() => navigateTo("home")}>Home</button>
-        <button type="button" onClick={() => navigateTo("projects")}>Projects</button>
-        <button type="button" onClick={() => navigateTo("tech")}>Tech</button>
-        <button type="button" onClick={() => navigateTo("contact")}>Contact</button>
-      </div>
+      
+
+<div className="links">
+  <button type="button" onClick={() => navigateTo("home")}>Home</button>
+  <button type="button" onClick={() => navigateTo("projects")}>Projects</button>
+
+  <Link href="/hackathons">
+    Hackathons
+  </Link>
+
+  <button type="button" onClick={() => navigateTo("tech")}>Tech</button>
+  <button type="button" onClick={() => navigateTo("contact")}>Contact</button>
+</div>
 
       <button type="button" className="modeButton" onClick={nextMode}>
         {modeText}
@@ -664,23 +670,26 @@ function Navbar({ mode, setMode }) {
           gap: 24px;
         }
 
-        .links button {
-          border: 0;
-          background: transparent;
-          color: var(--text);
-          padding: 6px 0;
-          font-size: 0.9rem;
-          font-weight: 600;
-          cursor: pointer;
-          opacity: 0.86;
-          transition: color 0.25s ease, opacity 0.25s ease, transform 0.25s ease;
-        }
+        .links button,
+.links a {
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  padding: 6px 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  opacity: 0.86;
+  text-decoration: none;
+  transition: color 0.25s ease, opacity 0.25s ease, transform 0.25s ease;
+}
 
-        .links button:hover {
-          opacity: 1;
-          color: var(--accent);
-          transform: translateY(-1px);
-        }
+.links button:hover,
+.links a:hover {
+  opacity: 1;
+  color: var(--accent);
+  transform: translateY(-1px);
+}
 
         .modeButton {
           padding: 9px 17px;
